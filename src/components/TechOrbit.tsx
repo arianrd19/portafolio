@@ -1,22 +1,22 @@
 type Tech = { name: string; angle: number; highlight?: boolean };
 
 const ring1: Tech[] = [
-  { name: "HTML", angle: 60, highlight: true },
-  { name: "CSS", angle: 200, highlight: true },
-  { name: "Javascript", angle: 280, highlight: true },
-  { name: "React", angle: 150 },
+  { name: "HTML", angle: 0, highlight: true },
+  { name: "React", angle: 90 },
+  { name: "CSS", angle: 180, highlight: true },
+  { name: "Javascript", angle: 270, highlight: true },
 ];
 const ring2: Tech[] = [
-  { name: "Next.js", angle: 170 },
-  { name: "TypeScript", angle: 280 },
   { name: "Docker", angle: 30 },
-  { name: "Python", angle: 240 },
+  { name: "Next.js", angle: 120 },
+  { name: "Python", angle: 210 },
+  { name: "TypeScript", angle: 300 },
 ];
 const ring3: Tech[] = [
-  { name: "MySQL", angle: 70 },
-  { name: "Supabase", angle: 30 },
-  { name: "PHP", angle: 350 },
-  { name: "MongoDB", angle: 320 },
+  { name: "MySQL", angle: 60 },
+  { name: "Supabase", angle: 150 },
+  { name: "MongoDB", angle: 240 },
+  { name: "PHP", angle: 330 },
 ];
 
 function Planet({
