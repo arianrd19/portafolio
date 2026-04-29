@@ -12,34 +12,31 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>({
   repeat = false,
 }: Options = {}) {
   const ref = useRef<T | null>(null);
-  const [visible, setVisible] = useState(false);
+  // Por seguridad arrancamos en true. El efecto decidirá si lo oculta para animar.
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
+    if (!el || typeof window === "undefined") return;
 
-    if (typeof window === "undefined") return;
-
-    // Reduced motion → mostrar de inmediato
     const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-    if (reduceMotion) {
+    if (reduceMotion || typeof IntersectionObserver === "undefined") {
       setVisible(true);
       return;
     }
 
-    // Sin IO → mostrar
-    if (typeof IntersectionObserver === "undefined") {
-      setVisible(true);
-      return;
-    }
-
-    // Si ya está dentro del viewport al montar, mostrar inmediatamente
     const rect = el.getBoundingClientRect();
     const viewportH = window.innerHeight || document.documentElement.clientHeight;
-    if (rect.top < viewportH && rect.bottom > 0) {
+    const inViewport = rect.top < viewportH && rect.bottom > 0;
+
+    if (inViewport) {
+      // Ya visible → no animamos, lo dejamos mostrado.
       setVisible(true);
-      if (!repeat) return;
+      return;
     }
+
+    // Está fuera del viewport: lo ocultamos para luego animarlo al entrar.
+    setVisible(false);
 
     const obs = new IntersectionObserver(
       (entries) => {
@@ -54,11 +51,10 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>({
       },
       { threshold, rootMargin }
     );
-
     obs.observe(el);
 
-    // Failsafe: si tras 600ms nada se disparó, forzar visible
-    const failsafe = window.setTimeout(() => setVisible(true), 600);
+    // Failsafe: si en 1s nada disparó, mostrar igualmente
+    const failsafe = window.setTimeout(() => setVisible(true), 1000);
 
     return () => {
       obs.disconnect();
