@@ -1,17 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 
 type Options = {
-  /** 0–1, qué porción debe ser visible para activarse */
   threshold?: number;
-  /** rootMargin del IntersectionObserver */
   rootMargin?: string;
-  /** Si true, vuelve a ocultarse al salir del viewport (por defecto false: una vez visto, queda) */
   repeat?: boolean;
 };
 
 export function useReveal<T extends HTMLElement = HTMLDivElement>({
-  threshold = 0.15,
-  rootMargin = "0px 0px -60px 0px",
+  threshold = 0.05,
+  rootMargin = "0px 0px -40px 0px",
   repeat = false,
 }: Options = {}) {
   const ref = useRef<T | null>(null);
@@ -21,20 +18,27 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>({
     const el = ref.current;
     if (!el) return;
 
-    // SSR / entornos sin window
     if (typeof window === "undefined") return;
 
-    // Respeta prefers-reduced-motion: mostramos inmediatamente
+    // Reduced motion → mostrar de inmediato
     const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
     if (reduceMotion) {
       setVisible(true);
       return;
     }
 
-    // Fallback si el navegador no soporta IntersectionObserver
+    // Sin IO → mostrar
     if (typeof IntersectionObserver === "undefined") {
       setVisible(true);
       return;
+    }
+
+    // Si ya está dentro del viewport al montar, mostrar inmediatamente
+    const rect = el.getBoundingClientRect();
+    const viewportH = window.innerHeight || document.documentElement.clientHeight;
+    if (rect.top < viewportH && rect.bottom > 0) {
+      setVisible(true);
+      if (!repeat) return;
     }
 
     const obs = new IntersectionObserver(
@@ -52,7 +56,14 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>({
     );
 
     obs.observe(el);
-    return () => obs.disconnect();
+
+    // Failsafe: si tras 2s nada se disparó, forzar visible
+    const failsafe = window.setTimeout(() => setVisible(true), 2000);
+
+    return () => {
+      obs.disconnect();
+      window.clearTimeout(failsafe);
+    };
   }, [threshold, rootMargin, repeat]);
 
   return { ref, visible };
