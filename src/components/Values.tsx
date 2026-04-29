@@ -16,7 +16,7 @@ export function Values() {
         </Reveal>
         <div className="grid md:grid-cols-3 gap-5">
           {values.map((v, i) => (
-            <Reveal key={v.num} delay={i * 120}>
+            <Reveal key={v.num} index={i} delayStep={120}>
               <div className="hover-lift bg-card border border-border rounded-xl p-8 group h-full">
                 <span className="font-mono-ui text-xs text-muted-foreground">{v.num}</span>
                 <h3 className="mt-6 text-2xl font-semibold transition-colors group-hover:text-lime">{v.title}</h3>
