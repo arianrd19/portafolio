@@ -34,7 +34,7 @@ export function Projects() {
 
         <div className="grid sm:grid-cols-2 gap-5">
           {projects.map((p, i) => (
-            <Reveal key={p.num} delay={i * 90}>
+            <Reveal key={p.num} index={i}>
               <a
                 href={p.url}
                 target="_blank"
