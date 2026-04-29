@@ -57,8 +57,8 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>({
 
     obs.observe(el);
 
-    // Failsafe: si tras 2s nada se disparó, forzar visible
-    const failsafe = window.setTimeout(() => setVisible(true), 2000);
+    // Failsafe: si tras 600ms nada se disparó, forzar visible
+    const failsafe = window.setTimeout(() => setVisible(true), 600);
 
     return () => {
       obs.disconnect();
