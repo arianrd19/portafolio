@@ -1,41 +1,42 @@
 import { useEffect, useRef, useState } from "react";
 
 type Options = {
-  /** 0–1, qué porción debe ser visible para activarse */
   threshold?: number;
-  /** rootMargin del IntersectionObserver */
   rootMargin?: string;
-  /** Si true, vuelve a ocultarse al salir del viewport (por defecto false: una vez visto, queda) */
   repeat?: boolean;
 };
 
 export function useReveal<T extends HTMLElement = HTMLDivElement>({
-  threshold = 0.15,
-  rootMargin = "0px 0px -60px 0px",
+  threshold = 0.05,
+  rootMargin = "0px 0px -40px 0px",
   repeat = false,
 }: Options = {}) {
   const ref = useRef<T | null>(null);
-  const [visible, setVisible] = useState(false);
+  // Por seguridad arrancamos en true. El efecto decidirá si lo oculta para animar.
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
+    if (!el || typeof window === "undefined") return;
 
-    // SSR / entornos sin window
-    if (typeof window === "undefined") return;
-
-    // Respeta prefers-reduced-motion: mostramos inmediatamente
     const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-    if (reduceMotion) {
+    if (reduceMotion || typeof IntersectionObserver === "undefined") {
       setVisible(true);
       return;
     }
 
-    // Fallback si el navegador no soporta IntersectionObserver
-    if (typeof IntersectionObserver === "undefined") {
+    const rect = el.getBoundingClientRect();
+    const viewportH = window.innerHeight || document.documentElement.clientHeight;
+    const inViewport = rect.top < viewportH && rect.bottom > 0;
+
+    if (inViewport) {
+      // Ya visible → no animamos, lo dejamos mostrado.
       setVisible(true);
       return;
     }
+
+    // Está fuera del viewport: lo ocultamos para luego animarlo al entrar.
+    setVisible(false);
 
     const obs = new IntersectionObserver(
       (entries) => {
@@ -50,9 +51,15 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>({
       },
       { threshold, rootMargin }
     );
-
     obs.observe(el);
-    return () => obs.disconnect();
+
+    // Failsafe: si en 1s nada disparó, mostrar igualmente
+    const failsafe = window.setTimeout(() => setVisible(true), 1000);
+
+    return () => {
+      obs.disconnect();
+      window.clearTimeout(failsafe);
+    };
   }, [threshold, rootMargin, repeat]);
 
   return { ref, visible };
