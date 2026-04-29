@@ -1,5 +1,12 @@
 import { Reveal } from "./Reveal";
 
+const socials = [
+  { label: "GitHub", url: "https://github.com", arrow: "↗" },
+  { label: "LinkedIn", url: "https://linkedin.com", arrow: "↗" },
+  { label: "WhatsApp", url: "https://wa.me/18498686348", arrow: "↗" },
+  { label: "Download CV", url: "#", arrow: "↓" },
+];
+
 export function About() {
   return (
     <section id="about" className="px-6 md:px-10 py-24 border-t border-border/60">
@@ -28,6 +35,21 @@ export function About() {
             I work best in environments where autonomy matters and problems are genuinely hard. If your team values clean
             code, direct communication, and shipping on time, we're probably a great fit.
           </p>
+
+          <div className="flex flex-wrap gap-x-6 gap-y-3 mb-10 font-mono-ui text-sm">
+            {socials.map((s) => (
+              <a
+                key={s.label}
+                href={s.url}
+                target={s.arrow === "↗" ? "_blank" : undefined}
+                rel="noopener noreferrer"
+                className="story-link text-muted-foreground hover:text-lime transition-colors inline-flex items-center gap-1"
+              >
+                {s.label} <span>{s.arrow}</span>
+              </a>
+            ))}
+          </div>
+
           <a
             href="#contact"
             className="group inline-flex items-center gap-2 bg-lime text-primary-foreground px-6 py-3 rounded-md font-mono-ui text-sm font-semibold hover:opacity-90 hover:-translate-y-0.5 transition-all duration-300"
