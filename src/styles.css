@@ -182,7 +182,7 @@
 }
 @keyframes glow-pulse {
   0%, 100% { box-shadow: 0 0 30px -8px var(--accent-cyan); }
-  50% { box-shadow: 0 0 70px 4px var(--accent-cyan); }
+  50% { box-shadow: 0 0 70px 4px var(--accent-magenta); }
 }
 @keyframes marquee {
   from { transform: translateX(0); }
@@ -222,11 +222,12 @@
 .text-shimmer {
   background: linear-gradient(
     90deg,
-    var(--foreground) 0%,
-    var(--foreground) 40%,
-    var(--accent-cyan) 50%,
-    var(--foreground) 60%,
-    var(--foreground) 100%
+    #00B4D8 0%,
+    #4361EE 20%,
+    #7209B7 40%,
+    #B5179E 60%,
+    #F72585 80%,
+    #FB8500 100%
   );
   background-size: 200% 100%;
   -webkit-background-clip: text;
