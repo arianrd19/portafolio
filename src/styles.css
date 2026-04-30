@@ -104,7 +104,7 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     background-image:
-      radial-gradient(circle at 1px 1px, oklch(0.3 0.01 250) 1px, transparent 0);
+      radial-gradient(circle at 1px 1px, oklch(0.3 0.04 285) 1px, transparent 0);
     background-size: 32px 32px;
     background-attachment: fixed;
   }
@@ -126,16 +126,25 @@
     letter-spacing: 0.02em;
   }
   .text-lime {
-    color: var(--lime);
+    color: var(--accent-cyan);
   }
   .bg-lime {
-    background-color: var(--lime);
+    background-color: var(--accent-cyan);
   }
   .border-lime {
-    border-color: var(--lime);
+    border-color: var(--accent-cyan);
   }
   .glow-lime {
-    box-shadow: 0 0 40px -10px var(--lime);
+    box-shadow: 0 0 40px -10px var(--accent-magenta);
+  }
+  .bg-gradient-brand {
+    background-image: var(--gradient-brand);
+  }
+  .text-gradient-brand {
+    background-image: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 }
 
