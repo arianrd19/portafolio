@@ -1,26 +1,14 @@
-import { useState, useEffect } from "react";
 import { Link } from "@tanstack/react-router";
-
-const nav = [
-  { hash: "projects", label: "Projects" },
-  { hash: "stack", label: "Stack" },
-  { hash: "about", label: "About" },
-];
+import { useLang } from "@/i18n/LanguageContext";
 
 export function SiteHeader() {
-  const [lang, setLang] = useState<"EN" | "ES">("EN");
+  const { lang, setLang, t } = useLang();
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const saved = localStorage.getItem("lang");
-    if (saved === "EN" || saved === "ES") setLang(saved);
-  }, []);
-
-  const toggleLang = () => {
-    const next = lang === "EN" ? "ES" : "EN";
-    setLang(next);
-    if (typeof window !== "undefined") localStorage.setItem("lang", next);
-  };
+  const nav = [
+    { hash: "projects", label: t.nav.projects },
+    { hash: "stack", label: t.nav.stack },
+    { hash: "about", label: t.nav.about },
+  ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/70 border-b border-border/50">
@@ -29,13 +17,13 @@ export function SiteHeader() {
           to="/"
           className="font-mono-ui text-sm tracking-widest text-foreground hover:text-lime transition-colors"
         >
-          <span className="text-lime">[</span>ANTHONY MARC SOSA<span className="text-lime">]</span>
+          <span className="text-lime">[</span>ARIAN REYES DIESTRA<span className="text-lime">]</span>
         </Link>
         <nav className="flex items-center gap-3 md:gap-8 font-mono-ui text-sm">
           <div className="hidden md:flex items-center gap-8">
             {nav.map((n) => (
               <a
-                key={n.label}
+                key={n.hash}
                 href={`#${n.hash}`}
                 className="story-link text-muted-foreground hover:text-foreground transition-colors"
               >
@@ -47,15 +35,28 @@ export function SiteHeader() {
             href="#contact"
             className="px-4 py-1.5 rounded-md border border-border hover:border-lime hover:text-lime transition-colors"
           >
-            Contact
+            {t.nav.contact}
           </a>
-          <button
-            onClick={toggleLang}
-            aria-label="Toggle language"
-            className="px-2 py-1 text-xs border border-border rounded text-muted-foreground hover:border-lime hover:text-lime transition-colors min-w-10"
-          >
-            {lang}
-          </button>
+          <div className="flex items-center text-xs border border-border rounded overflow-hidden">
+            <button
+              onClick={() => setLang("EN")}
+              aria-label="English"
+              className={`px-2 py-1 transition-colors ${
+                lang === "EN" ? "bg-lime text-primary-foreground" : "text-muted-foreground hover:text-lime"
+              }`}
+            >
+              EN
+            </button>
+            <button
+              onClick={() => setLang("ES")}
+              aria-label="Español"
+              className={`px-2 py-1 transition-colors ${
+                lang === "ES" ? "bg-lime text-primary-foreground" : "text-muted-foreground hover:text-lime"
+              }`}
+            >
+              ES
+            </button>
+          </div>
         </nav>
       </div>
     </header>

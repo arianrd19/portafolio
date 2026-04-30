@@ -1,28 +1,28 @@
 import { Reveal } from "./Reveal";
+import { useLang } from "@/i18n/LanguageContext";
 
 export function Contact() {
+  const { t } = useLang();
   return (
     <section id="contact" className="px-6 md:px-10 py-32 border-t border-border/60 relative overflow-hidden">
       <div
-        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 size-[700px] rounded-full opacity-15 blur-3xl"
-        style={{ background: "radial-gradient(circle, var(--lime) 0%, transparent 70%)" }}
+        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 size-[700px] rounded-full opacity-20 blur-3xl"
+        style={{ background: "radial-gradient(circle, var(--accent-magenta) 0%, transparent 70%)" }}
       />
       <div className="relative mx-auto max-w-7xl text-center">
         <Reveal>
-          <p className="font-mono-ui text-xs text-lime mb-4">— Contact</p>
+          <p className="font-mono-ui text-xs text-lime mb-4">{t.contact.kicker}</p>
           <h2 className="font-display text-5xl md:text-8xl tracking-tight">
-            Have a project <em className="text-shimmer not-italic">in mind?</em>
+            {t.contact.title1} <em className="text-shimmer not-italic">{t.contact.title2}</em>
           </h2>
-          <p className="mt-6 text-muted-foreground max-w-md mx-auto">
-            Tell me about it. I reply in less than 24 hours.
-          </p>
+          <p className="mt-6 text-muted-foreground max-w-md mx-auto">{t.contact.sub}</p>
           <a
             href="https://wa.me/18498686348?text=Hi%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk%20about%20a%20project."
             target="_blank"
             rel="noopener noreferrer"
-            className="group mt-10 inline-flex items-center gap-2 bg-lime text-primary-foreground px-8 py-4 rounded-md font-mono-ui text-sm font-semibold hover:-translate-y-0.5 transition-all duration-300 animate-glow-pulse"
+            className="group mt-10 inline-flex items-center gap-2 bg-gradient-brand text-white px-8 py-4 rounded-md font-mono-ui text-sm font-semibold hover:-translate-y-0.5 transition-all duration-300 animate-glow-pulse"
           >
-            Send a message
+            {t.contact.cta}
             <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
           </a>
         </Reveal>
@@ -32,13 +32,14 @@ export function Contact() {
 }
 
 export function SiteFooter() {
+  const { t } = useLang();
   return (
     <footer className="px-6 md:px-10 py-10 border-t border-border/60">
       <div className="mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between gap-4 font-mono-ui text-xs text-muted-foreground">
-        <span>© {new Date().getFullYear()} Anthony Marc Sosa — Crafted with care.</span>
+        <span>© {new Date().getFullYear()} Arian Reyes Diestra — {t.contact.footer}</span>
         <span className="flex items-center gap-2">
           <span className="size-2 rounded-full bg-lime animate-pulse-dot" />
-          Available for projects
+          {t.hero.available}
         </span>
       </div>
     </footer>
