@@ -126,30 +126,17 @@ export function TechStack() {
         </Reveal>
 
         <Reveal delay={120}>
-          <div
-            className="relative mx-auto"
-            style={{ width: "min(640px, 92vw)", height: "min(640px, 92vw)" }}
-          >
-            <div
-              className="absolute top-1/2 left-1/2"
-              style={{
-                width: 640,
-                height: 640,
-                transform: "translate(-50%, -50%) scale(min(1, calc((100vw - 32px) / 640)))",
-                transformOrigin: "center",
-              }}
-            >
-              {/* Central sun */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-                <div className="size-16 rounded-full bg-gradient-brand animate-glow-pulse flex items-center justify-center">
-                  <span className="font-mono-ui text-xs text-background font-bold">ARD</span>
-                </div>
+          <div className="relative w-full aspect-square max-w-[640px] mx-auto">
+            {/* Central sun */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+              <div className="size-14 md:size-16 rounded-full bg-gradient-brand animate-glow-pulse flex items-center justify-center">
+                <span className="font-mono-ui text-[10px] md:text-xs text-background font-bold">ARD</span>
               </div>
-
-              <Orbit items={ring1} radius={110} duration={32} />
-              <Orbit items={ring2} radius={200} duration={55} reverse />
-              <Orbit items={ring3} radius={290} duration={80} />
             </div>
+
+            <Orbit items={ring1} radiusPct={17} duration={32} />
+            <Orbit items={ring2} radiusPct={32} duration={55} reverse />
+            <Orbit items={ring3} radiusPct={46} duration={80} />
           </div>
         </Reveal>
       </div>
