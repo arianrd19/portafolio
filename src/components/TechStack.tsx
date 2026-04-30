@@ -126,34 +126,30 @@ export function TechStack() {
         </Reveal>
 
         <Reveal delay={120}>
-          {/* Scale wrapper: 640px design fits any width */}
-          <div className="mx-auto w-full max-w-[640px]">
+          <div
+            className="relative mx-auto"
+            style={{ width: "min(640px, 92vw)", height: "min(640px, 92vw)" }}
+          >
             <div
-              className="relative mx-auto"
+              className="absolute top-1/2 left-1/2"
               style={{
-                width: "min(640px, 92vw)",
-                height: "min(640px, 92vw)",
+                width: 640,
+                height: 640,
+                transform: "translate(-50%, -50%) scale(min(1, calc((100vw - 32px) / 640)))",
+                transformOrigin: "center",
               }}
             >
-              <div
-                className="absolute inset-0 origin-center"
-                style={{
-                  transform: "scale(var(--orbit-scale))",
-                  // @ts-ignore custom prop
-                  "--orbit-scale": "min(1, calc((100vw - 32px) / 640))",
-                } as React.CSSProperties}
-              >
-                <div className="relative w-[640px] h-[640px]">
-            {/* Central sun */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-              <div className="size-14 md:size-16 rounded-full bg-gradient-brand animate-glow-pulse flex items-center justify-center">
-                <span className="font-mono-ui text-[10px] md:text-xs text-background font-bold">ARD</span>
+              {/* Central sun */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+                <div className="size-16 rounded-full bg-gradient-brand animate-glow-pulse flex items-center justify-center">
+                  <span className="font-mono-ui text-xs text-background font-bold">ARD</span>
+                </div>
               </div>
-            </div>
 
-            <Orbit items={ring1} radius={110} duration={32} />
-            <Orbit items={ring2} radius={200} duration={55} reverse />
-            <Orbit items={ring3} radius={290} duration={80} />
+              <Orbit items={ring1} radius={110} duration={32} />
+              <Orbit items={ring2} radius={200} duration={55} reverse />
+              <Orbit items={ring3} radius={290} duration={80} />
+            </div>
           </div>
         </Reveal>
       </div>
