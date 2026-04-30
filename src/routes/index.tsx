@@ -11,13 +11,13 @@ import { ExitIntentModal } from "@/components/ExitIntentModal";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Anthony Marc Sosa — Senior Full Stack Developer" },
+      { title: "Arian Reyes Diestra — Senior Full Stack Developer" },
       {
         name: "description",
         content:
           "Senior Full Stack Developer specialized in modern architectures, performance, and user experience. I design, build, and scale digital products.",
       },
-      { property: "og:title", content: "Anthony Marc Sosa — Senior Full Stack Developer" },
+      { property: "og:title", content: "Arian Reyes Diestra — Senior Full Stack Developer" },
       {
         property: "og:description",
         content: "I turn complex ideas into digital products people love to use.",
