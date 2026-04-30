@@ -1,6 +1,23 @@
 export type Lang = "EN" | "ES";
 
-export const translations = {
+type Dict = {
+  nav: { projects: string; stack: string; about: string; contact: string };
+  hero: {
+    role: string; available: string; scroll: string;
+    design: string; build: string; scale: string;
+    tagline: string; viewProjects: string; letsTalk: string;
+  };
+  projects: { kicker: string; title: string; cases: string; view: string; viewAll: string };
+  tech: { kicker: string; title: string };
+  about: { kicker: string; title: string; p1html: string; p2: string; cta: string; download: string };
+  values: { kicker: string; title: string; items: { title: string; sub: string; quote: string }[] };
+  contact: { kicker: string; title1: string; title2: string; sub: string; cta: string; footer: string };
+  exit: { kicker: string; title: string; p1: string; p2: string; cta: string; dismiss: string };
+};
+
+export type { Dict };
+
+export const translations: Record<Lang, Dict> = {
   EN: {
     nav: { projects: "Projects", stack: "Stack", about: "About", contact: "Contact" },
     hero: {
@@ -115,6 +132,4 @@ export const translations = {
       dismiss: "Quizás en otro momento",
     },
   },
-} as const;
-
-export type Dict = typeof translations["EN"];
+};
