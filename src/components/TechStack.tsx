@@ -39,22 +39,23 @@ const ring3: Tech[] = [
 
 function Orbit({
   items,
-  radius,
+  radiusPct,
   duration,
   reverse = false,
 }: {
   items: Tech[];
-  radius: number;
+  radiusPct: number;
   duration: number;
   reverse?: boolean;
 }) {
   const step = 360 / items.length;
+  const size = radiusPct * 2;
   return (
     <>
       {/* Dashed orbit ring */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-border/40"
-        style={{ width: radius * 2, height: radius * 2 }}
+        style={{ width: `${size}%`, height: `${size}%` }}
       />
       {/* Rotating layer */}
       <div
@@ -69,13 +70,13 @@ function Orbit({
         {items.map((t, i) => {
           const angle = step * i;
           const rad = (angle * Math.PI) / 180;
-          const x = Math.cos(rad) * radius;
-          const y = Math.sin(rad) * radius;
+          const x = Math.cos(rad) * radiusPct;
+          const y = Math.sin(rad) * radiusPct;
           return (
             <div
               key={t.name}
               className="absolute"
-              style={{ left: x, top: y, transform: "translate(-50%, -50%)" }}
+              style={{ left: `${x}%`, top: `${y}%`, transform: "translate(-50%, -50%)" }}
             >
               {/* Counter-rotation keeps content upright */}
               <div
