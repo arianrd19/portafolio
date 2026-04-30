@@ -181,8 +181,8 @@
   50% { transform: translateY(-8px); }
 }
 @keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 30px -8px var(--lime); }
-  50% { box-shadow: 0 0 70px 4px var(--lime); }
+  0%, 100% { box-shadow: 0 0 30px -8px var(--accent-cyan); }
+  50% { box-shadow: 0 0 70px 4px var(--accent-cyan); }
 }
 @keyframes marquee {
   from { transform: translateX(0); }
@@ -215,7 +215,7 @@
 }
 .hover-lift:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 50px -20px oklch(0 0 0 / 0.6), 0 0 0 1px var(--lime);
+  box-shadow: 0 20px 50px -20px oklch(0 0 0 / 0.6), 0 0 0 1px var(--accent-cyan);
 }
 
 /* Animated gradient text */
@@ -224,7 +224,7 @@
     90deg,
     var(--foreground) 0%,
     var(--foreground) 40%,
-    var(--lime) 50%,
+    var(--accent-cyan) 50%,
     var(--foreground) 60%,
     var(--foreground) 100%
   );
@@ -247,7 +247,7 @@
   bottom: -2px;
   width: 100%;
   height: 1px;
-  background-color: var(--lime);
+  background-color: var(--accent-cyan);
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
@@ -273,7 +273,7 @@
 }
 .project-card:hover .num-bar {
   width: 64px;
-  background-color: var(--lime);
+  background-color: var(--accent-cyan);
 }
 
 /* Smooth scroll for anchor nav */
