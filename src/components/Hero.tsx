@@ -1,8 +1,9 @@
 import { TechOrbit } from "./TechOrbit";
 import { useLang } from "@/i18n/LanguageContext";
+import { ScrambleText } from "./ScrambleText";
 
 export function Hero() {
-  const { t } = useLang();
+  const { lang, t } = useLang();
   return (
     <section className="relative min-h-screen pt-28 pb-20 px-6 md:px-10 overflow-hidden">
       {/* Ambient glow */}
@@ -34,9 +35,30 @@ export function Hero() {
               {t.hero.role}
             </p>
             <h1 className="font-display text-[clamp(3.5rem,11vw,9rem)]">
-              <span className="block animate-fade-up" style={{ animationDelay: "200ms" }}>{t.hero.design}</span>
-              <span className="block text-gradient-brand animate-fade-up" style={{ animationDelay: "350ms" }}>{t.hero.build}</span>
-              <span className="block animate-fade-up" style={{ animationDelay: "500ms" }}>{t.hero.scale}</span>
+              <ScrambleText
+                key={`design-${lang}`}
+                as="span"
+                className="block"
+                text={t.hero.design}
+                delay={200}
+                duration={900}
+              />
+              <ScrambleText
+                key={`build-${lang}`}
+                as="span"
+                className="block text-gradient-brand"
+                text={t.hero.build}
+                delay={500}
+                duration={1100}
+              />
+              <ScrambleText
+                key={`scale-${lang}`}
+                as="span"
+                className="block"
+                text={t.hero.scale}
+                delay={850}
+                duration={900}
+              />
             </h1>
             <p
               className="mt-10 max-w-md text-muted-foreground leading-relaxed animate-fade-up"
