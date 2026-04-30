@@ -126,7 +126,24 @@ export function TechStack() {
         </Reveal>
 
         <Reveal delay={120}>
-          <div className="relative w-full aspect-square max-w-[640px] mx-auto">
+          {/* Scale wrapper: 640px design fits any width */}
+          <div className="mx-auto w-full max-w-[640px]">
+            <div
+              className="relative mx-auto"
+              style={{
+                width: "min(640px, 92vw)",
+                height: "min(640px, 92vw)",
+              }}
+            >
+              <div
+                className="absolute inset-0 origin-center"
+                style={{
+                  transform: "scale(var(--orbit-scale))",
+                  // @ts-ignore custom prop
+                  "--orbit-scale": "min(1, calc((100vw - 32px) / 640))",
+                } as React.CSSProperties}
+              >
+                <div className="relative w-[640px] h-[640px]">
             {/* Central sun */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
               <div className="size-14 md:size-16 rounded-full bg-gradient-brand animate-glow-pulse flex items-center justify-center">
