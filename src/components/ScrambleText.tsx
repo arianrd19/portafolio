@@ -8,9 +8,15 @@ type Props = {
   as?: keyof React.JSX.IntrinsicElements;
 };
 
-const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!<>-_/\\[]{}=+*";
+const CHARS = "ABCDEFGHJKLMNOPRSTUVXYZ0123456789+-=*#&%";
 
-export function ScrambleText({ text, delay = 0, duration = 900, className, as: Tag = "span" }: Props) {
+export function ScrambleText({
+  text,
+  delay = 0,
+  duration = 900,
+  className,
+  as: Tag = "span",
+}: Props) {
   const [output, setOutput] = useState(text);
   const rafRef = useRef<number | null>(null);
   const startedRef = useRef(false);
@@ -28,7 +34,7 @@ export function ScrambleText({ text, delay = 0, duration = 900, className, as: T
       text
         .split("")
         .map((c) => (c === " " ? " " : CHARS[Math.floor(Math.random() * CHARS.length)]))
-        .join("")
+        .join(""),
     );
 
     const startTimer = window.setTimeout(() => {
@@ -36,7 +42,9 @@ export function ScrambleText({ text, delay = 0, duration = 900, className, as: T
       const start = performance.now();
       const chars = text.split("");
       // Each char locks in at a staggered point in time
-      const lockTimes = chars.map((_, i) => (i / chars.length) * duration * 0.7 + Math.random() * (duration * 0.3));
+      const lockTimes = chars.map(
+        (_, i) => (i / chars.length) * duration * 0.7 + Math.random() * (duration * 0.3),
+      );
 
       const tick = (now: number) => {
         const elapsed = now - start;

@@ -3,15 +3,35 @@ export type Lang = "EN" | "ES";
 type Dict = {
   nav: { projects: string; stack: string; about: string; contact: string };
   hero: {
-    role: string; available: string; scroll: string;
-    design: string; build: string; scale: string;
-    tagline: string; viewProjects: string; letsTalk: string;
+    role: string;
+    available: string;
+    scroll: string;
+    design: string;
+    build: string;
+    scale: string;
+    tagline: string;
+    viewProjects: string;
+    letsTalk: string;
   };
   projects: { kicker: string; title: string; cases: string; view: string; viewAll: string };
   tech: { kicker: string; title: string };
-  about: { kicker: string; title: string; p1html: string; p2: string; cta: string; download: string };
+  about: {
+    kicker: string;
+    title: string;
+    p1html: string;
+    p2: string;
+    cta: string;
+    download: string;
+  };
   values: { kicker: string; title: string; items: { title: string; sub: string; quote: string }[] };
-  contact: { kicker: string; title1: string; title2: string; sub: string; cta: string; footer: string };
+  contact: {
+    kicker: string;
+    title1: string;
+    title2: string;
+    sub: string;
+    cta: string;
+    footer: string;
+  };
   exit: { kicker: string; title: string; p1: string; p2: string; cta: string; dismiss: string };
 };
 
@@ -21,7 +41,7 @@ export const translations: Record<Lang, Dict> = {
   EN: {
     nav: { projects: "Projects", stack: "Stack", about: "About", contact: "Contact" },
     hero: {
-      role: "— Senior Full Stack Developer",
+      role: "— Freelance Developer",
       available: "Available for projects",
       scroll: "scroll",
       design: "DESIGN",
@@ -53,9 +73,21 @@ export const translations: Record<Lang, Dict> = {
       kicker: "— Principles",
       title: "How I work.",
       items: [
-        { title: "Clean Code", sub: "The code I write today is maintained by someone tomorrow.", quote: "Code that reads like prose, not a puzzle." },
-        { title: "Performance", sub: "Every millisecond counts in the user experience.", quote: "Metrics first, optimization after. Always measured." },
-        { title: "Communication", sub: "Clear updates, without unnecessary jargon.", quote: "The best teams speak plainly. So do I." },
+        {
+          title: "Clean Code",
+          sub: "The code I write today is maintained by someone tomorrow.",
+          quote: "Code that reads like prose, not a puzzle.",
+        },
+        {
+          title: "Performance",
+          sub: "Every millisecond counts in the user experience.",
+          quote: "Metrics first, optimization after. Always measured.",
+        },
+        {
+          title: "Communication",
+          sub: "Clear updates, without unnecessary jargon.",
+          quote: "The best teams speak plainly. So do I.",
+        },
       ],
     },
     contact: {
@@ -78,7 +110,7 @@ export const translations: Record<Lang, Dict> = {
   ES: {
     nav: { projects: "Proyectos", stack: "Stack", about: "Sobre mí", contact: "Contacto" },
     hero: {
-      role: "— Desarrollador Full Stack Senior",
+      role: "— Desarrollador Freelance",
       available: "Disponible para proyectos",
       scroll: "desliza",
       design: "DISEÑO",
@@ -110,9 +142,21 @@ export const translations: Record<Lang, Dict> = {
       kicker: "— Principios",
       title: "Cómo trabajo.",
       items: [
-        { title: "Código Limpio", sub: "El código que escribo hoy lo mantendrá alguien mañana.", quote: "Código que se lee como prosa, no como un acertijo." },
-        { title: "Rendimiento", sub: "Cada milisegundo cuenta en la experiencia del usuario.", quote: "Primero medir, luego optimizar. Siempre con datos." },
-        { title: "Comunicación", sub: "Actualizaciones claras, sin jerga innecesaria.", quote: "Los mejores equipos hablan claro. Yo también." },
+        {
+          title: "Código Limpio",
+          sub: "El código que escribo hoy lo mantendrá alguien mañana.",
+          quote: "Código que se lee como prosa, no como un acertijo.",
+        },
+        {
+          title: "Rendimiento",
+          sub: "Cada milisegundo cuenta en la experiencia del usuario.",
+          quote: "Primero medir, luego optimizar. Siempre con datos.",
+        },
+        {
+          title: "Comunicación",
+          sub: "Actualizaciones claras, sin jerga innecesaria.",
+          quote: "Los mejores equipos hablan claro. Yo también.",
+        },
       ],
     },
     contact: {

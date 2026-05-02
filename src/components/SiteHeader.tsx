@@ -12,12 +12,13 @@ export function SiteHeader() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/70 border-b border-border/50">
-      <div className="mx-auto max-w-7xl px-6 md:px-10 h-16 flex items-center justify-between">
+      <div className="w-full px-6 md:px-10 lg:px-16 2xl:px-24 h-16 flex items-center justify-between">
         <Link
           to="/"
           className="font-mono-ui text-sm tracking-widest text-foreground hover:text-lime transition-colors"
         >
-          <span className="text-lime">[</span>ARIAN REYES DIESTRA<span className="text-lime">]</span>
+          <span className="text-lime">[</span>ARIAN REYES DIESTRA
+          <span className="text-lime">]</span>
         </Link>
         <nav className="flex items-center gap-3 md:gap-8 font-mono-ui text-sm">
           <div className="hidden md:flex items-center gap-8">
@@ -42,7 +43,9 @@ export function SiteHeader() {
               onClick={() => setLang("EN")}
               aria-label="English"
               className={`px-2 py-1 transition-colors ${
-                lang === "EN" ? "bg-lime text-primary-foreground" : "text-muted-foreground hover:text-lime"
+                lang === "EN"
+                  ? "bg-lime text-primary-foreground"
+                  : "text-muted-foreground hover:text-lime"
               }`}
             >
               EN
@@ -51,7 +54,9 @@ export function SiteHeader() {
               onClick={() => setLang("ES")}
               aria-label="Español"
               className={`px-2 py-1 transition-colors ${
-                lang === "ES" ? "bg-lime text-primary-foreground" : "text-muted-foreground hover:text-lime"
+                lang === "ES"
+                  ? "bg-lime text-primary-foreground"
+                  : "text-muted-foreground hover:text-lime"
               }`}
             >
               ES

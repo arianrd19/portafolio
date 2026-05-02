@@ -49,7 +49,7 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>({
           }
         });
       },
-      { threshold, rootMargin }
+      { threshold, rootMargin },
     );
     obs.observe(el);
 

@@ -35,11 +35,7 @@ export function Reveal({
 
   // Calcula el delay efectivo: explícito > derivado del índice > 0
   const computedDelay =
-    typeof delay === "number"
-      ? delay
-      : typeof index === "number"
-      ? index * delayStep
-      : 0;
+    typeof delay === "number" ? delay : typeof index === "number" ? index * delayStep : 0;
 
   return (
     <Tag

@@ -50,15 +50,15 @@ function Ring({
       >
         {items.map((t) => {
           const rad = (t.angle * Math.PI) / 180;
-          const x = Math.cos(rad) * radius;
-          const y = Math.sin(rad) * radius;
+          const x = Number((Math.cos(rad) * radius).toFixed(2));
+          const y = Number((Math.sin(rad) * radius).toFixed(2));
           return (
             <div
               key={t.name}
               className="absolute"
               style={{
-                left: x,
-                top: y,
+                left: `${x}px`,
+                top: `${y}px`,
                 transform: "translate(-50%, -50%)",
               }}
             >
@@ -75,7 +75,9 @@ function Ring({
                     t.highlight ? "bg-lime animate-pulse-dot" : "bg-muted-foreground"
                   }`}
                 />
-                <span className={t.highlight ? "text-lime" : "text-muted-foreground"}>{t.name}</span>
+                <span className={t.highlight ? "text-lime" : "text-muted-foreground"}>
+                  {t.name}
+                </span>
               </div>
             </div>
           );
