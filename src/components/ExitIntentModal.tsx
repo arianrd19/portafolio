@@ -56,7 +56,7 @@ export function ExitIntentModal() {
 
         <div className="flex flex-col gap-3">
           <a
-            href="https://wa.me/18498686348?text=Hi%20Arian%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk%20about%20a%20project"
+            href="https://wa.me/message/GPOMR44DE7TSK1"
             target="_blank"
             rel="noopener noreferrer"
             onClick={close}

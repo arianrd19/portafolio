@@ -20,7 +20,7 @@ export function Contact() {
           </h2>
           <p className="mt-6 text-muted-foreground max-w-md mx-auto">{t.contact.sub}</p>
           <a
-            href="https://wa.me/18498686348?text=Hi%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk%20about%20a%20project."
+            href="https://wa.me/message/GPOMR44DE7TSK1"
             target="_blank"
             rel="noopener noreferrer"
             className="group mt-10 inline-flex items-center gap-2 bg-gradient-brand text-white px-8 py-4 rounded-md font-mono-ui text-sm font-semibold hover:-translate-y-0.5 transition-all duration-300 animate-glow-pulse"

@@ -33,7 +33,7 @@ export function About() {
             <div className="w-full max-w-[320px] flex flex-col gap-3 mt-2">
               <div className="grid grid-cols-2 gap-3">
                 <a
-                  href="https://github.com"
+                  href="https://github.com/arianrd19"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 py-3 rounded-md border border-border/60 hover:border-lime/60 hover:text-lime transition-colors font-mono-ui text-xs text-muted-foreground"
@@ -41,7 +41,7 @@ export function About() {
                   <Github className="size-4" /> GitHub ↗
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/arianrd/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 py-3 rounded-md border border-border/60 hover:border-lime/60 hover:text-lime transition-colors font-mono-ui text-xs text-muted-foreground"
@@ -50,7 +50,7 @@ export function About() {
                 </a>
               </div>
               <a
-                href="https://wa.me/18498686348"
+                href="https://wa.me/message/GPOMR44DE7TSK1"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 py-3 rounded-md border border-lime/30 bg-lime/5 text-lime hover:bg-lime/10 transition-colors font-mono-ui text-sm font-medium"
