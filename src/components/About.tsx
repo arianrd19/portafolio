@@ -1,6 +1,7 @@
 import { Reveal } from "./Reveal";
 import { useLang } from "@/i18n/LanguageContext";
-import { Github, Linkedin } from "lucide-react";
+import { Linkedin } from "lucide-react";
+import cvPdf from "@/assets/CV-REYES DIESTRA.pdf";
 
 const nums = ["01", "02", "03"];
 
@@ -31,24 +32,14 @@ export function About() {
             </div>
 
             <div className="w-full max-w-[320px] flex flex-col gap-3 mt-2">
-              <div className="grid grid-cols-2 gap-3">
-                <a
-                  href="https://github.com/arianrd19"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 py-3 rounded-md border border-border/60 hover:border-lime/60 hover:text-lime transition-colors font-mono-ui text-xs text-muted-foreground"
-                >
-                  <Github className="size-4" /> GitHub ↗
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/arianrd/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 py-3 rounded-md border border-border/60 hover:border-lime/60 hover:text-lime transition-colors font-mono-ui text-xs text-muted-foreground"
-                >
-                  <Linkedin className="size-4" /> LinkedIn ↗
-                </a>
-              </div>
+              <a
+                href="https://www.linkedin.com/in/arianrd/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 py-3 rounded-md border border-border/60 hover:border-lime/60 hover:text-lime transition-colors font-mono-ui text-xs text-muted-foreground"
+              >
+                <Linkedin className="size-4" /> LinkedIn ↗
+              </a>
               <a
                 href="https://wa.me/message/GPOMR44DE7TSK1"
                 target="_blank"
@@ -58,34 +49,32 @@ export function About() {
                 WhatsApp
               </a>
               <a
-                href="#"
+                href={cvPdf}
+                download="CV-REYES DIESTRA.pdf"
                 className="flex items-center justify-center gap-2 py-3 rounded-md border border-lime text-lime hover:bg-lime hover:text-black transition-colors font-mono-ui text-sm font-medium"
               >
-                Download CV
+                {t.about?.download}
               </a>
             </div>
           </Reveal>
 
           {/* Column 2: Text and CTA */}
-          <Reveal delay={120} className="flex flex-col gap-8 py-4">
-            <div
-              className="text-lg md:text-xl text-muted-foreground leading-relaxed [&>strong]:text-foreground [&>strong]:font-semibold"
-              dangerouslySetInnerHTML={{
-                __html:
-                  t.about?.p1html ||
-                  "I'm a full stack developer with over <strong>5 years building</strong> digital products from start to finish. I'm equally comfortable on the frontend and backend, and obsessed with code quality as much as the end-user experience.",
-              }}
-            />
+          <Reveal delay={120} className="flex flex-col gap-6 py-4">
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-              {t.about?.p2 ||
-                "I work best in environments where autonomy matters and problems are genuinely hard. If your team values clean code, direct communication, and shipping on time, we're probably a great fit."}
+              {t.about?.p1}
+            </p>
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+              {t.about?.p2}
+            </p>
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+              {t.about?.p3}
             </p>
             <div>
               <a
                 href="#contact"
                 className="inline-block mt-4 bg-lime text-black px-8 py-4 rounded font-mono-ui text-sm font-semibold hover:opacity-90 hover:-translate-y-0.5 transition-all duration-300"
               >
-                Let's work together
+                {t.about?.cta}
               </a>
             </div>
           </Reveal>

@@ -43,7 +43,7 @@ const cloudProps = {
     wheelZoom: false,
     imageScale: 2,
     activeCursor: "default",
-    tooltip: "native",
+    tooltip: "native" as const,
     initial: [0.1, -0.1],
     clickToFront: 500,
     tooltipDelay: 0,

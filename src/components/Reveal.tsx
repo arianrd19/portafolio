@@ -2,20 +2,12 @@ import { type HTMLAttributes, type ElementType } from "react";
 import { useReveal } from "@/hooks/use-reveal";
 
 type Props = HTMLAttributes<HTMLElement> & {
-  /** Etiqueta HTML a renderizar (div por defecto) */
   as?: ElementType;
-  /** Delay manual en ms */
   delay?: number;
-  /** Índice (0-based) para delays escalonados automáticos cuando se mapea una lista */
   index?: number;
-  /** Paso en ms entre items consecutivos (usado con `index`). Por defecto 90ms. */
   delayStep?: number;
-  /** Umbral de visibilidad (0–1) */
   threshold?: number;
-  /** rootMargin del IntersectionObserver */
   rootMargin?: string;
-  /** Si true, repite la animación al volver a entrar en viewport */
-  repeat?: boolean;
 };
 
 export function Reveal({
@@ -25,13 +17,12 @@ export function Reveal({
   delayStep = 90,
   threshold,
   rootMargin,
-  repeat,
   className = "",
   style,
   children,
   ...rest
 }: Props) {
-  const { ref, visible } = useReveal<HTMLElement>({ threshold, rootMargin, repeat });
+  const { ref, visible } = useReveal<HTMLElement>({ threshold, rootMargin });
 
   // Calcula el delay efectivo: explícito > derivado del índice > 0
   const computedDelay =

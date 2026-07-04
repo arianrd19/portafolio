@@ -13,13 +13,14 @@ type Dict = {
     viewProjects: string;
     letsTalk: string;
   };
-  projects: { kicker: string; title: string; cases: string; view: string; viewAll: string };
+  projects: { kicker: string; title: string; view: string; viewAll: string };
   tech: { kicker: string; title: string };
   about: {
     kicker: string;
     title: string;
-    p1html: string;
+    p1: string;
     p2: string;
+    p3: string;
     cta: string;
     download: string;
   };
@@ -55,7 +56,6 @@ export const translations: Record<Lang, Dict> = {
     projects: {
       kicker: "— Selected work",
       title: "Projects.",
-      cases: "cases",
       view: "View project",
       viewAll: "View all projects",
     },
@@ -63,9 +63,9 @@ export const translations: Record<Lang, Dict> = {
     about: {
       kicker: "— About",
       title: "Hi, I'm Arian.",
-      p1html:
-        "I'm a full stack developer with over <b>5 years building</b> digital products from start to finish. I'm equally comfortable on the frontend and backend, and obsessed with code quality as much as the end-user experience.",
-      p2: "I work best in environments where autonomy matters and problems are genuinely hard. If your team values clean code, direct communication, and shipping on time, we're probably a great fit.",
+      p1: "I'm a Full Stack developer specialized in creating web solutions that help businesses and entrepreneurs optimize processes, automate tasks, and turn ideas into functional digital products.",
+      p2: "I have over 5 years of experience building complete applications, from planning to implementation. My approach is to build scalable, secure, and user-friendly software, avoiding unnecessary complexity and always looking for the most efficient and cost-effective solution.",
+      p3: "I'm motivated by new challenges, solving technical problems, and creating tools that generate real impact for those who use them. I believe the best software is the one that makes work simpler for people.",
       cta: "Let's work together",
       download: "Download CV",
     },
@@ -124,7 +124,6 @@ export const translations: Record<Lang, Dict> = {
     projects: {
       kicker: "— Trabajos seleccionados",
       title: "Proyectos.",
-      cases: "casos",
       view: "Ver proyecto",
       viewAll: "Ver todos los proyectos",
     },
@@ -132,9 +131,9 @@ export const translations: Record<Lang, Dict> = {
     about: {
       kicker: "— Sobre mí",
       title: "Hola, soy Arian.",
-      p1html:
-        "Soy desarrollador full stack con más de <b>5 años creando</b> productos digitales de principio a fin. Me siento igual de cómodo en frontend y backend, y soy obsesivo con la calidad del código y la experiencia del usuario.",
-      p2: "Doy lo mejor en entornos donde la autonomía importa y los problemas son realmente difíciles. Si tu equipo valora el código limpio, la comunicación directa y entregar a tiempo, probablemente encajemos.",
+      p1: "Soy desarrollador Full Stack especializado en crear soluciones web que ayudan a empresas y emprendedores a optimizar procesos, automatizar tareas y convertir ideas en productos digitales funcionales.",
+      p2: "Cuento con más de 5 años de experiencia desarrollando aplicaciones completas, desde la planificación hasta la implementación. Mi enfoque es construir software escalable, seguro y fácil de usar, evitando la complejidad innecesaria y buscando siempre la solución más eficiente y rentable.",
+      p3: "Me motiva enfrentar nuevos desafíos, resolver problemas técnicos y crear herramientas que generen un impacto real en quienes las utilizan. Considero que el mejor software es aquel que hace el trabajo más simple para las personas.",
       cta: "Trabajemos juntos",
       download: "Descargar CV",
     },
