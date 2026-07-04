@@ -2,6 +2,7 @@ import { Reveal } from "./Reveal";
 import { useLang } from "@/i18n/LanguageContext";
 import { Linkedin } from "lucide-react";
 import cvPdf from "@/assets/CV-REYES DIESTRA.pdf";
+import profileImg from "@/assets/4RD.png";
 
 const nums = ["01", "02", "03"];
 
@@ -25,7 +26,7 @@ export function About() {
                 <div className="absolute top-4 right-4 w-12 h-12 border-t-2 border-r-2 border-lime rounded-tr" />
               </div>
               <img
-                src="/src/assets/4RD.png"
+                src={profileImg}
                 alt="Arian Reyes Diestra"
                 className="w-full h-full object-cover"
               />
