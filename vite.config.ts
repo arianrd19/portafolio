@@ -13,4 +13,7 @@ export default defineConfig({
       enabled: true,
     },
   },
+  vite: {
+    base: "/portafolio/",
+  },
 });
