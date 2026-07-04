@@ -29,6 +29,7 @@ export function About() {
                 src={profileImg}
                 alt="Arian Reyes Diestra"
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
 

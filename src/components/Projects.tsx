@@ -255,6 +255,7 @@ function ProjectCard({ p, lang, t, onOpenModal }: { p: Project; lang: string; t:
           src={p.image}
           alt={p.title}
           className="w-full h-full object-cover object-center blur-sm scale-105 group-[.is-active]:scale-100 lg:group-[.is-active]:scale-105 lg:group-hover:scale-100 transition-transform duration-700"
+          loading="lazy"
         />
       </div>
 
